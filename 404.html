@@ -4,13 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 — Route Not Found | HJ.SYS</title>
+  <meta name="theme-color" content="#050505" />
+
+  <!-- Theme boot (shared key with the portfolio) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('hj_theme')
+          || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root { --primary: #00f3ff; --secondary: #ff00ea; }
+    :root {
+      --bg: #050505;
+      --primary: #00f3ff;
+      --secondary: #ff00ea;
+      --text: #e0e0e0;
+      --muted: #888;
+      --border: rgba(0, 243, 255, 0.2);
+      --on-accent: #000000;
+    }
+    html[data-theme="light"] {
+      --bg: #eef2f6;
+      --primary: #0087a0;
+      --secondary: #c0009c;
+      --text: #10181d;
+      --muted: #5a6a75;
+      --border: rgba(0, 120, 145, 0.28);
+      --on-accent: #ffffff;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background: #050505;
-      color: #e0e0e0;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'JetBrains Mono', monospace;
       min-height: 100vh;
       display: flex;
@@ -20,7 +53,14 @@
       background-image:
         radial-gradient(circle at 50% 40%, rgba(0, 243, 255, 0.08), transparent 55%),
         repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0, 243, 255, 0.02) 4px);
+      transition: background-color 0.25s ease, color 0.25s ease;
     }
+    html[data-theme="light"] body {
+      background-image:
+        radial-gradient(circle at 50% 40%, rgba(0, 135, 160, 0.10), transparent 55%),
+        repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0, 135, 160, 0.03) 4px);
+    }
+
     .wrap { max-width: 640px; text-align: center; }
     pre {
       color: var(--primary);
@@ -32,8 +72,10 @@
       display: inline-block;
       text-align: left;
     }
-    h1 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; letter-spacing: 2px; }
-    p { color: #888; font-size: 0.9rem; margin-bottom: 24px; }
+    html[data-theme="light"] pre { text-shadow: none; }
+
+    h1 { font-size: 1.1rem; color: var(--text); margin-bottom: 8px; letter-spacing: 2px; }
+    p { color: var(--muted); font-size: 0.9rem; margin-bottom: 24px; }
     a {
       display: inline-block;
       padding: 12px 24px;
@@ -45,11 +87,68 @@
       clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
       transition: background 0.25s, color 0.25s, box-shadow 0.25s;
     }
-    a:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+    a:hover { background: var(--primary); color: var(--on-accent); box-shadow: 0 0 20px var(--primary); }
     .glyph { color: var(--secondary); }
+
+    /* ============ Theme toggle ============ */
+    .theme-toggle {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(0, 243, 255, 0.05);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+    }
+    html[data-theme="light"] .theme-toggle { background: rgba(0, 135, 160, 0.07); }
+    .theme-toggle:hover,
+    .theme-toggle:active {
+      border-color: var(--primary);
+      box-shadow: 0 0 18px rgba(0, 243, 255, 0.22);
+    }
+    .theme-icon { display: inline-flex; width: 14px; height: 14px; }
+    .theme-icon svg { width: 14px; height: 14px; display: block; color: var(--primary); }
+    .icon-sun { display: none; }
+    html[data-theme="light"] .icon-moon { display: none; }
+    html[data-theme="light"] .icon-sun { display: block; }
+
+    .theme-label {
+      display: inline-block;
+      min-width: 3.4em;
+      text-align: right;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .theme-label::after { content: 'DARK'; }
+    html[data-theme="light"] .theme-label::after { content: 'LIGHT'; }
   </style>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" type="button"
+          aria-label="Switch to light mode" aria-pressed="false">
+    <span class="theme-icon" aria-hidden="true">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+      </svg>
+    </span>
+    <span class="theme-label" aria-hidden="true"></span>
+  </button>
+
   <div class="wrap">
     <pre>
   ╔══════════════════════════════════════╗
@@ -60,5 +159,46 @@
     <p>The requested route is not present on this host.</p>
     <a href="./">cd /home → return to portfolio</a>
   </div>
+
+  <script>
+    (function () {
+      var KEY = 'hj_theme';
+      var toggle = document.getElementById('themeToggle');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      var media = window.matchMedia('(prefers-color-scheme: light)');
+
+      var get = function () {
+        return document.documentElement.getAttribute('data-theme') || 'dark';
+      };
+
+      function apply(theme) {
+        var light = theme === 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        if (toggle) {
+          toggle.setAttribute('aria-pressed', light ? 'true' : 'false');
+          toggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+        }
+        if (meta) meta.setAttribute('content', light ? '#eef2f6' : '#050505');
+      }
+
+      apply(get());
+
+      if (toggle) {
+        toggle.addEventListener('click', function () {
+          var next = get() === 'light' ? 'dark' : 'light';
+          apply(next);
+          try { localStorage.setItem(KEY, next); } catch (e) {}
+        });
+      }
+
+      var onScheme = function (e) {
+        var stored = null;
+        try { stored = localStorage.getItem(KEY); } catch (err) {}
+        if (!stored) apply(e.matches ? 'light' : 'dark');
+      };
+      if (media.addEventListener) media.addEventListener('change', onScheme);
+      else if (media.addListener) media.addListener(onScheme);
+    })();
+  </script>
 </body>
 </html>

@@ -3,6 +3,49 @@ document.addEventListener("DOMContentLoaded", () => {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(pointer: fine)').matches;
 
+  // --- 0. THEME (light / dark) ---
+  const THEME_KEY = 'hj_theme';
+  const themeToggle = document.getElementById('themeToggle');
+  const themeMeta = document.querySelector('meta[name="theme-color"]');
+  const themeMedia = window.matchMedia('(prefers-color-scheme: light)');
+
+  const getTheme = () => document.documentElement.getAttribute('data-theme') || 'dark';
+
+  function applyTheme(theme) {
+    const light = theme === 'light';
+    document.documentElement.setAttribute('data-theme', theme);
+
+    if (themeToggle) {
+      themeToggle.setAttribute('aria-pressed', light ? 'true' : 'false');
+      themeToggle.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+    }
+    if (themeMeta) themeMeta.setAttribute('content', light ? '#eef2f6' : '#050505');
+
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+  }
+
+  function setTheme(theme) {
+    applyTheme(theme);
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+  }
+
+  applyTheme(getTheme()); // sync label / aria / meta with the boot script
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      setTheme(getTheme() === 'light' ? 'dark' : 'light');
+    });
+  }
+
+  // Follow the OS only while the user hasn't picked a mode manually
+  const onSchemeChange = (e) => {
+    let stored = null;
+    try { stored = localStorage.getItem(THEME_KEY); } catch (err) {}
+    if (!stored) applyTheme(e.matches ? 'light' : 'dark');
+  };
+  if (themeMedia.addEventListener) themeMedia.addEventListener('change', onSchemeChange);
+  else if (themeMedia.addListener) themeMedia.addListener(onSchemeChange);
+
   // --- 1. CUSTOM CURSOR ---
   const cursorDot = document.querySelector('.cursor-dot');
   const cursorOutline = document.querySelector('.cursor-outline');
@@ -261,10 +304,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
+  // Soft radial sprite so particles have feathered edges (looks good in both themes)
+  const particleSprite = (() => {
+    const c = document.createElement('canvas');
+    c.width = c.height = 64;
+    const ctx = c.getContext('2d');
+    const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0,    'rgba(255,255,255,1)');
+    g.addColorStop(0.35, 'rgba(255,255,255,0.7)');
+    g.addColorStop(1,    'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 64, 64);
+    return new THREE.CanvasTexture(c);
+  })();
+
   const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.03, color: 0x00f3ff, transparent: true,
-    opacity: 0.8, blending: THREE.AdditiveBlending
+    size: 0.05,
+    color: 0x00f3ff,
+    map: particleSprite,
+    transparent: true,
+    opacity: 0.8,
+    blending: THREE.AdditiveBlending,
+    depthWrite: false
   });
+
+  // Particle look follows the active theme.
+  // Additive blending only works on dark backgrounds — swap to NormalBlending
+  // in light mode so the dots actually appear on top of the pale page.
+  const applyParticleTheme = (theme) => {
+    const light = theme === 'light';
+    particlesMaterial.color.set(light ? 0x0087a0 : 0x00f3ff);
+    particlesMaterial.opacity = light ? 0.7 : 0.8;
+    particlesMaterial.blending = light ? THREE.NormalBlending : THREE.AdditiveBlending;
+    particlesMaterial.needsUpdate = true;
+  };
+  applyParticleTheme(getTheme());
+  document.addEventListener('themechange', (e) => applyParticleTheme(e.detail.theme));
+
   const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
   scene.add(particlesMesh);
 

@@ -8,6 +8,19 @@
   <meta name="theme-color" content="#050505" />
   <link rel="canonical" href="https://YOURUSERNAME.github.io/" />
 
+  <!-- Theme boot (runs before CSS paints to avoid flash) -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('hj_theme')
+          || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Hrushikesh Uday Joshi | Network Architect" />
@@ -104,6 +117,22 @@
     <div class="status-badge">
       <span class="dot"></span> System Online
     </div>
+
+    <button class="theme-toggle hover-target" id="themeToggle" type="button"
+            aria-label="Switch to light mode" aria-pressed="false">
+      <span class="theme-icon" aria-hidden="true">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
+        </svg>
+      </span>
+      <span class="theme-label" aria-hidden="true"></span>
+    </button>
   </nav>
 
   <main id="panels">
@@ -145,7 +174,6 @@
         <div class="bento-box profile-box reveal">
           <div class="profile-img-wrapper">
             <img src="profile.jpg" alt="Hrushikesh Uday Joshi" />
-            <div class="scanline"></div>
           </div>
           <div class="profile-info">
             <h3>Hrushikesh U. Joshi</h3>

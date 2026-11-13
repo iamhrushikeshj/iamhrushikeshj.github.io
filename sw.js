@@ -1,4 +1,4 @@
-const CACHE = 'hj-portfolio-v2';
+const CACHE = 'hj-portfolio-v4';   // was 'hj-portfolio-v3'
 const ASSETS = [
   './',
   './index.html',
