@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="96" fill="#050505"/>
+  <rect x="24" y="24" width="464" height="464" rx="80" fill="none" stroke="#00f3ff" stroke-opacity="0.4" stroke-width="4"/>
+  <text x="256" y="320" font-family="ui-monospace, monospace" font-size="220" font-weight="700"
+        fill="#00f3ff" text-anchor="middle" letter-spacing="-10">HJ</text>
+  <text x="256" y="410" font-family="ui-monospace, monospace" font-size="52"
+        fill="#ff00ea" text-anchor="middle" letter-spacing="8">.SYS</text>
+</svg>

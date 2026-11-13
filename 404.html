@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Route Not Found | HJ.SYS</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --primary: #00f3ff; --secondary: #ff00ea; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #050505;
+      color: #e0e0e0;
+      font-family: 'JetBrains Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background-image:
+        radial-gradient(circle at 50% 40%, rgba(0, 243, 255, 0.08), transparent 55%),
+        repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(0, 243, 255, 0.02) 4px);
+    }
+    .wrap { max-width: 640px; text-align: center; }
+    pre {
+      color: var(--primary);
+      font-size: 0.75rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      text-shadow: 0 0 12px rgba(0, 243, 255, 0.4);
+      white-space: pre;
+      display: inline-block;
+      text-align: left;
+    }
+    h1 { font-size: 1.1rem; color: #fff; margin-bottom: 8px; letter-spacing: 2px; }
+    p { color: #888; font-size: 0.9rem; margin-bottom: 24px; }
+    a {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+      transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+    }
+    a:hover { background: var(--primary); color: #000; box-shadow: 0 0 20px var(--primary); }
+    .glyph { color: var(--secondary); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <pre>
+  ╔══════════════════════════════════════╗
+  ║  <span class="glyph">ERROR 404 — ROUTE NOT FOUND</span>        ║
+  ║  Destination host unreachable        ║
+  ╚══════════════════════════════════════╝</pre>
+    <h1>PATH DOES NOT EXIST</h1>
+    <p>The requested route is not present on this host.</p>
+    <a href="./">cd /home → return to portfolio</a>
+  </div>
+</body>
+</html>
