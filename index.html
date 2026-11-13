@@ -3,347 +3,372 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hrushikesh Uday Joshi | Network Engineer</title>
-  <meta name="description" content="Network Engineering professional specializing in MikroTik, GPON/EPON, FTTH, and wireless ISP infrastructure." />
-  <meta name="author" content="Hrushikesh Uday Joshi" />
+  <title>Hrushikesh Uday Joshi | Network Architect</title>
+  <meta name="description" content="Network Engineer & Field Ops Specialist. MikroTik, FTTH, GPON/EPON, fiber optics." />
+  <meta name="theme-color" content="#050505" />
+  <link rel="canonical" href="https://YOURUSERNAME.github.io/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Hrushikesh Uday Joshi | Network Engineer" />
-  <meta property="og:description" content="Network Engineering professional specializing in MikroTik, GPON/EPON, FTTH, and wireless ISP infrastructure." />
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hrushikesh Uday Joshi | Network Architect" />
+  <meta property="og:description" content="Network Engineer & Field Ops Specialist. MikroTik, FTTH, GPON/EPON, fiber optics." />
+  <meta property="og:url" content="https://YOURUSERNAME.github.io/" />
+  <meta property="og:image" content="https://YOURUSERNAME.github.io/preview.png" />
 
-  <link rel="stylesheet" href="style.css" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hrushikesh Uday Joshi | Network Architect" />
+  <meta name="twitter:description" content="Network Engineer & Field Ops Specialist." />
+  <meta name="twitter:image" content="https://YOURUSERNAME.github.io/preview.png" />
+
+  <!-- JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hrushikesh Uday Joshi",
+    "jobTitle": "Network Engineer",
+    "url": "https://YOURUSERNAME.github.io/",
+    "email": "mailto:testmail@test.com",
+    "address": { "@type": "PostalAddress", "addressRegion": "Maharashtra", "addressCountry": "IN" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Gharda Institute of Technology" },
+    "knowsAbout": ["Network Engineering","MikroTik","FTTH","GPON","EPON","Fiber Optics","OTDR","PPPoE"]
+  }
+  </script>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23050505'/><text x='50' y='70' font-size='55' font-family='monospace' font-weight='bold' fill='%2300f3ff' text-anchor='middle'>HJ</text></svg>">
+  <link rel="apple-touch-icon" href="icon.svg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Boot screen -->
+  <div id="bootScreen" class="boot-screen" aria-hidden="true">
+    <div class="boot-log" id="bootLog"></div>
+  </div>
 
-  <!-- NAV -->
+  <!-- Custom Cursor -->
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+
+  <!-- 3D Background Canvas -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Navigation / Tabs -->
   <nav class="navbar">
-    <div class="nav-container">
-      <a href="#home" class="logo">HJ<span>.</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <button class="logo hover-target" data-tab="intro" aria-label="Go to Intro">HJ</button>
+
+    <ul class="tab-nav" role="tablist" aria-label="Portfolio sections">
+      <li role="presentation">
+        <button class="tab-link active hover-target" role="tab" data-tab="intro" aria-selected="true">
+          <span class="tab-num">1</span>Intro
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="about" aria-selected="false">
+          <span class="tab-num">2</span>About
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="experience" aria-selected="false">
+          <span class="tab-num">3</span>Experience
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="internships" aria-selected="false">
+          <span class="tab-num">4</span>Internships
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="skills" aria-selected="false">
+          <span class="tab-num">5</span>Skills
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="projects" aria-selected="false">
+          <span class="tab-num">6</span>Projects
+        </button>
+      </li>
+      <li role="presentation">
+        <button class="tab-link hover-target" role="tab" data-tab="contact" aria-selected="false">
+          <span class="tab-num">7</span>Contact
+        </button>
+      </li>
+    </ul>
+
+    <div class="status-badge">
+      <span class="dot"></span> System Online
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header id="home" class="hero">
-    <div class="hero-content">
-      <div class="hero-photo">
-        <img src="profile.jpg" alt="Hrushikesh Uday Joshi" />
-      </div>
-      <p class="hero-tag">👋 Hello, I'm</p>
-      <h1>Hrushikesh Uday Joshi</h1>
-      <h2 class="hero-role">Network Engineer &amp; Field Operations Specialist</h2>
-      <p class="hero-desc">
-        Building high-availability ISP infrastructure — MikroTik routing, GPON/EPON OLTs,
-        FTTH rollouts, and wireless links that actually stay up.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contact" class="btn btn-primary">Get in Touch</a>
-        <a href="#experience" class="btn btn-secondary">View Experience</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <span class="stat-num">3+</span>
-          <span class="stat-label">Years in Field</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">FTTH</span>
-          <span class="stat-label">End-to-End Rollouts</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">PTP/PMP</span>
-          <span class="stat-label">Wireless Deployments</span>
-        </div>
-      </div>
-    </div>
-  </header>
+  <main id="panels">
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title"><span>01.</span> About Me</h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            Results-driven Network Engineering professional with hands-on experience in designing,
-            configuring, and maintaining high-availability ISP infrastructure — including
-            <strong>MikroTik routers</strong>, <strong>GPON/EPON OLTs</strong>,
-            <strong>Ubiquiti wireless bridges</strong>, and full <strong>FTTH networks</strong>.
-          </p>
-          <p>
-            I specialize in fiber optics, fusion splicing, OTDR link testing, signal attenuation
-            optimization, and network troubleshooting. As a field operations manager, I've led
-            last-mile rollouts, field operations, and network optimization for residential and
-            commercial clients.
-          </p>
-          <p>
-            Currently a <strong>Junior Technical Assistant</strong> at the
-            <strong>IITB–Citadel Securities Quantitative Research Lab</strong>, while continuing
-            freelance networking work and exploring information security, open-source security
-            tools, and network automation.
-          </p>
+    <!-- ================= INTRO ================= -->
+    <section class="panel active" id="panel-intro" data-panel="intro" role="tabpanel">
+      <div class="hero-content">
+        <p class="terminal-text reveal">&gt; INITIALIZING PROTOCOL_</p>
+        <h1 class="glitch-text hover-target reveal" data-text="HRUSHIKESH JOSHI">HRUSHIKESH JOSHI</h1>
+        <h2 class="subtitle reveal">NETWORK ENGINEER &amp; FIELD OPS SPECIALIST</h2>
+        <p class="hero-desc reveal">
+          Architecting high-availability ISP infrastructure, MikroTik routing, and GPON/EPON networks.
+          Currently engineering at the <strong>IITB–Citadel Securities Quantitative Research Lab</strong>.
+        </p>
+        <a href="resume.pdf" download class="resume-link reveal">↓ Download Résumé (PDF)</a>
+
+        <!-- Keyboard shortcuts — vertical -->
+        <div class="shortcuts-panel reveal">
+          <p class="shortcuts-title">// NAVIGATION_KEYS</p>
+          <ul class="shortcuts-list">
+            <li><kbd>1</kbd><span class="arrow">→</span><span class="name">Intro</span></li>
+            <li><kbd>2</kbd><span class="arrow">→</span><span class="name">About</span></li>
+            <li><kbd>3</kbd><span class="arrow">→</span><span class="name">Experience</span></li>
+            <li><kbd>4</kbd><span class="arrow">→</span><span class="name">Internships</span></li>
+            <li><kbd>5</kbd><span class="arrow">→</span><span class="name">Skills</span></li>
+            <li><kbd>6</kbd><span class="arrow">→</span><span class="name">Projects</span></li>
+            <li><kbd>7</kbd><span class="arrow">→</span><span class="name">Contact</span></li>
+          </ul>
+          <p class="shortcuts-note">also: <kbd>←</kbd><kbd>→</kbd> prev/next</p>
         </div>
-        <div class="about-side">
-          <div class="info-card">
-            <h4>Quick Facts</h4>
-            <ul>
-              <li><span>Location</span> Maharashtra, India</li>
-              <li><span>Focus</span> ISP &amp; Field Networks</li>
-              <li><span>Education</span> B.E. Computer Engineering</li>
-              <li><span>Status</span> Working @ IITB–Citadel</li>
-            </ul>
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section class="panel" id="panel-about" data-panel="about" role="tabpanel">
+      <h2 class="section-title reveal">SYSTEM <span>PROFILE</span></h2>
+      <div class="bento-grid">
+
+        <div class="bento-box profile-box reveal">
+          <div class="profile-img-wrapper">
+            <img src="profile.jpg" alt="Hrushikesh Uday Joshi" />
+            <div class="scanline"></div>
+          </div>
+          <div class="profile-info">
+            <h3>Hrushikesh U. Joshi</h3>
+            <p>Maharashtra, India</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title"><span>02.</span> Experience</h2>
+        <div class="bento-box bio-box reveal">
+          <h3>// About_Me</h3>
+          <p>Results-driven Network Engineering professional with hands-on experience designing, configuring, and maintaining high-availability ISP infrastructure. Specialized in fiber optics, fusion splicing, OTDR link testing, and network optimization for residential and commercial clients.</p>
+        </div>
+
+        <div class="bento-box stats-box reveal">
+          <div class="stat-item">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">Years in Field</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">FTTH</span>
+            <span class="stat-label">End-to-End</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-num">PTP</span>
+            <span class="stat-label">Wireless Links</span>
+          </div>
+        </div>
+
+        <div class="bento-box edu-box reveal">
+          <h3>// Education</h3>
+          <p><strong>B.E. Computer Engineering</strong><br>Gharda Institute of Technology, 2021<br>CGPA: 6.76 / 10</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section class="panel" id="panel-experience" data-panel="experience" role="tabpanel">
+      <h2 class="section-title reveal">DATA <span>STREAM</span></h2>
       <div class="timeline">
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Sept 2026 – Present</div>
           <div class="timeline-content">
-            <span class="timeline-date">Sept 2026 – Present</span>
             <h3>Junior Technical Assistant</h3>
             <h4>IITB–Citadel Securities Quantitative Research Lab</h4>
-            <ul>
-              <li>Supporting quantitative research infrastructure and technical operations within the lab.</li>
-              <li>Assisting with systems, networking, and tooling used by researchers and lab staff.</li>
-            </ul>
+            <p>Supporting quantitative research infrastructure, networking, and systems tooling used by researchers and lab staff.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item reveal">
+          <div class="timeline-date">2021 – Present</div>
           <div class="timeline-content">
-            <span class="timeline-date">2021 – Present</span>
             <h3>Freelance Networking Technician</h3>
             <h4>Self-employed</h4>
-            <ul>
-              <li>Design and configure MikroTik routing solutions and GPON/EPON OLTs for optimized bandwidth distribution.</li>
-              <li>End-to-end FTTH rollout: fusion splicing, OTDR link testing, signal attenuation optimization, and RF budget calculations.</li>
-              <li>Design and deploy wireless network expansion, coverage extension, and Wi-Fi distribution for clients.</li>
-              <li>Provide IT infrastructure maintenance, audit, and support to local education institutes.</li>
-            </ul>
+            <p>Designing MikroTik routing solutions, GPON/EPON OLTs, and end-to-end FTTH rollouts. Performing fusion splicing, OTDR testing, and wireless network expansion.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Oct 2022 – May 2023</div>
           <div class="timeline-content">
-            <span class="timeline-date">Oct 2022 – May 2023</span>
-            <h3>Network Engineer &amp; Network Technician</h3>
-            <h4>Indrayani Communications, Alandi (Pune)</h4>
-            <ul>
-              <li>Deployed PTP wireless links and FTTH for high-speed broadband internet offerings.</li>
-              <li>Installed and configured Ubiquiti AirGrid wireless bridges, improving frontline link performance and resolving client escalations.</li>
-              <li>Configured onsite routing and switching hardware; conducted field assessments for high-availability network services.</li>
-            </ul>
+            <h3>Network Engineer &amp; Technician</h3>
+            <h4>Indrayani Communications, Pune</h4>
+            <p>Deployed PTP wireless links, configured Ubiquiti AirGrid bridges, and managed onsite routing/switching hardware for high-availability networks.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
+      </div>
+    </section>
+
+    <!-- ================= INTERNSHIPS ================= -->
+    <section class="panel" id="panel-internships" data-panel="internships" role="tabpanel">
+      <h2 class="section-title reveal">TRAINING <span>LOG</span></h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-date">Joister Infoserve Pvt. Ltd., Pune</div>
           <div class="timeline-content">
-            <span class="timeline-date">Internship</span>
             <h3>Planning &amp; Implementation Intern</h3>
             <h4>Joister Infoserve Pvt. Ltd., Pune</h4>
             <ul>
-              <li>Planned and designed fiber optics rollout, route surveys, feasibility studies, and field assessments for ISP expansion.</li>
-              <li>Prepared network design topology diagrams and technical documentation for large-scale infrastructure projects.</li>
-              <li>Gained hands-on experience with ISP backend core node installations, IP planning, and deployments.</li>
+              <li>Planning and design of fiber optics rollout, route surveys, feasibility studies and field assessments for ISP infrastructure expansion projects.</li>
+              <li>Preparing network design topology diagrams and technical documentation for large-scale network infrastructure projects.</li>
+              <li>Hands-on experience with end-to-end ISP backend core node installations, IP planning and deployments.</li>
             </ul>
           </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- SKILLS -->
-  <section id="skills" class="section">
-    <div class="container">
-      <h2 class="section-title"><span>03.</span> Technical Skills</h2>
-      <div class="skills-grid">
+    <!-- ================= SKILLS ================= -->
+    <section class="panel" id="panel-skills" data-panel="skills" role="tabpanel">
+      <h2 class="section-title reveal">CORE <span>CAPABILITIES</span></h2>
+      <div class="skills-container">
 
-        <div class="skill-card">
-          <div class="skill-icon">🖧</div>
-          <h3>Hardware &amp; Devices</h3>
-          <div class="tags">
-            <span>MikroTik Routers</span>
-            <span>Ubiquiti UniFi/airMAX</span>
-            <span>EPON/GPON OLTs</span>
-            <span>ONUs/ONTs</span>
-            <span>Switches</span>
+        <div class="skill-category reveal">
+          <h3>Hardware_Devices</h3>
+          <div class="skill-tags">
+            <span class="hover-target">MikroTik Routers</span>
+            <span class="hover-target">Ubiquiti UniFi</span>
+            <span class="hover-target">EPON/GPON OLTs</span>
+            <span class="hover-target">Switches</span>
           </div>
         </div>
 
-        <div class="skill-card">
-          <div class="skill-icon">⚙️</div>
-          <h3>Protocols &amp; Software</h3>
-          <div class="tags">
-            <span>TCP/IP</span>
-            <span>PPPoE</span>
-            <span>NAT</span>
-            <span>DHCP</span>
-            <span>Winbox</span>
-            <span>UniFi Controller</span>
-            <span>Network Monitoring Tools</span>
+        <div class="skill-category reveal">
+          <h3>Fiber_Optics</h3>
+          <div class="skill-tags">
+            <span class="hover-target">FTTH Architecture</span>
+            <span class="hover-target">Fusion Splicing</span>
+            <span class="hover-target">OTDR Testing</span>
           </div>
         </div>
 
-        <div class="skill-card">
-          <div class="skill-icon">🔌</div>
-          <h3>Fiber Optics</h3>
-          <div class="tags">
-            <span>FTTH Architecture</span>
-            <span>Fusion Splicing</span>
-            <span>OTDR Link Testing</span>
-            <span>Attenuation Optimization</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">📡</div>
-          <h3>Wireless Links</h3>
-          <div class="tags">
-            <span>PTP/PMP Deployments</span>
-            <span>Access Points</span>
-            <span>Troubleshooting</span>
-            <span>Technical Support</span>
+        <div class="skill-category reveal">
+          <h3>Protocols_Software</h3>
+          <div class="skill-tags">
+            <span class="hover-target">TCP/IP</span>
+            <span class="hover-target">PPPoE</span>
+            <span class="hover-target">NAT/DHCP</span>
+            <span class="hover-target">Winbox</span>
           </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title"><span>04.</span> Projects</h2>
-      <div class="projects-grid">
+    <!-- ================= PROJECTS ================= -->
+    <section class="panel" id="panel-projects" data-panel="projects" role="tabpanel">
+      <h2 class="section-title reveal">DEPLOYED <span>BUILDS</span></h2>
+      <div class="project-grid">
 
-        <div class="project-card">
-          <div class="project-header">
-            <span class="project-icon">🤖</span>
+        <article class="bento-box project-card reveal">
+          <span class="project-index">// 01</span>
+          <h3>FTTH Network Rollout</h3>
+          <p>End-to-end fiber-to-the-home deployment: GPON OLT commissioning, splitter hierarchy, fusion splicing and OTDR validation for multi-building residential coverage.</p>
+          <div class="skill-tags">
+            <span>GPON</span><span>FTTH</span><span>OTDR</span>
           </div>
-          <h3>Combat Robot</h3>
-          <p class="project-meta">Robowars, Techkriti 2017 — IIT Kanpur</p>
-          <p>
-            Arduino-based 8-bit wireless combat robot with custom-programmed motors and
-            radio link communication for real-time control.
-          </p>
-          <div class="tags">
-            <span>Arduino</span>
-            <span>Radio Link</span>
-            <span>Embedded</span>
+        </article>
+
+        <article class="bento-box project-card reveal">
+          <span class="project-index">// 02</span>
+          <h3>MikroTik Hotspot &amp; Billing</h3>
+          <p>RouterOS based hotspot and PPPoE server with bandwidth profiles, user manager, NAT/DHCP rules and per-plan rate limiting for a local ISP subscriber base.</p>
+          <div class="skill-tags">
+            <span>MikroTik</span><span>PPPoE</span><span>RouterOS</span>
           </div>
-        </div>
+        </article>
+
+        <article class="bento-box project-card reveal">
+          <span class="project-index">// 03</span>
+          <h3>PTP Wireless Backhaul</h3>
+          <p>Point-to-point 5 GHz backhaul using Ubiquiti AirGrid bridges — site survey, alignment, and link budgeting for a stable long-range connection.</p>
+          <div class="skill-tags">
+            <span>Ubiquiti</span><span>PTP</span><span>5GHz</span>
+          </div>
+        </article>
+
+        <article class="bento-box project-card reveal">
+          <span class="project-index">// 04</span>
+          <h3>Lab Network Infrastructure</h3>
+          <p>Supporting research-lab networking: VLAN segmentation, managed switching, structured cabling and uptime monitoring for compute-heavy workloads.</p>
+          <div class="skill-tags">
+            <span>VLAN</span><span>Switching</span><span>Uptime</span>
+          </div>
+        </article>
 
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- EDUCATION -->
-  <section id="education" class="section">
-    <div class="container">
-      <h2 class="section-title"><span>05.</span> Education</h2>
-      <div class="edu-grid">
+    <!-- ================= CONTACT ================= -->
+    <section class="panel" id="panel-contact" data-panel="contact" role="tabpanel">
+      <h2 class="section-title reveal">ESTABLISH <span>CONTACT</span></h2>
 
-        <div class="edu-card">
-          <span class="edu-year">2021</span>
-          <h3>B.E. Computer Engineering</h3>
-          <p>Gharda Institute of Technology, Ratnagiri, Maharashtra</p>
-          <p class="edu-score">CGPA: 6.76 / 10</p>
-        </div>
-
-        <div class="edu-card">
-          <span class="edu-year">HSC</span>
-          <h3>Higher Secondary Certificate — Science</h3>
-          <p>Maharashtra State Board</p>
-          <p class="edu-score">59.38%</p>
-        </div>
-
-        <div class="edu-card">
-          <span class="edu-year">SSC</span>
-          <h3>Secondary School Certificate</h3>
-          <p>Maharashtra State Board</p>
-          <p class="edu-score">75.40%</p>
-        </div>
-
+      <div class="contact-intro reveal">
+        <h3>READY TO DEPLOY?</h3>
+        <p>Available for network engineering roles and freelance infrastructure projects.<br>
+           <span class="tap-note">Tap an icon to call, message, or email directly.</span></p>
       </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section section-alt">
-    <div class="container contact-container">
-      <h2 class="section-title centered"><span>06.</span> Get In Touch</h2>
-      <p class="contact-desc">
-        I'm open to network engineering roles, field operations opportunities, and freelance
-        infrastructure projects. Let's build something reliable together.
-      </p>
-      <div class="contact-buttons">
-        <a href="mailto:iamhrushikeshj@gmail.com" class="btn btn-primary">✉️ Email Me</a>
-        <a href="https://www.linkedin.com/in/hrushikesh-joshi-a5069936a" target="_blank" rel="noopener" class="btn btn-secondary">LinkedIn ↗</a>
+      <div class="contact-icons reveal">
+        <a class="contact-icon-link call hover-target" href="tel:+917776996088" aria-label="Call" title="Call">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg>
+        </a>
+        <a class="contact-icon-link wa hover-target" href="https://wa.me/917776996088?text=Hi%20Hrushikesh%2C%20I%20found%20your%20portfolio%20on%20Github.." target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        </a>
+        <a class="contact-icon-link tg hover-target" href="https://t.me/mischief_God_1" target="_blank" rel="noopener" aria-label="Telegram" title="Telegram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        </a>
+        <a class="contact-icon-link mail hover-target" href="mailto:iamhrushikeshj@gmail.com" aria-label="Email" title="Email">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a class="contact-icon-link li hover-target" href="https://www.linkedin.com/in/hrushikesh-joshi-a5069936a" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.554V9h3.565v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
       </div>
-      <p class="contact-phone">📞 +91 77769 96088</p>
-    </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© <span id="year"></span> Hrushikesh Uday Joshi. Built with ❤️ and GitHub Pages.</p>
-  </footer>
+      <div class="footer-bottom">
+        <p>© 2026 Hrushikesh Uday Joshi</p>
+      </div>
+    </section>
 
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      navToggle.classList.toggle('active');
-    });
+  </main>
 
-    // Close nav on link click (mobile)
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        navToggle.classList.remove('active');
-      });
-    });
+  <!-- Prev / Next Tab Pager -->
+  <nav class="tab-pager" aria-label="Previous and next section">
+    <button class="pager-btn pager-prev hover-target" id="pagerPrev" type="button" aria-label="Previous section" hidden>
+      <span class="pager-dir">← Prev</span>
+      <span class="pager-name" id="prevName">—</span>
+    </button>
+    <button class="pager-btn pager-next hover-target" id="pagerNext" type="button" aria-label="Next section" hidden>
+      <span class="pager-dir">Next →</span>
+      <span class="pager-name" id="nextName">—</span>
+    </button>
+  </nav>
 
-    // Footer year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    // Smooth scroll offset for fixed navbar
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const offset = 70;
-          window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
-        }
-      });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
